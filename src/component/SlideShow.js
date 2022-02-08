@@ -50,13 +50,13 @@ function SlideShow() {
         }
     }
 
-    return <div>
+    return <div className='container-fluid'>
         <div className='row'>
-            <button className='btn btn-primary' style={{margin:'10px'}} onClick={resetHandler}>Reset</button>
-            <button className='btn btn-primary' style={{margin:'10px'}} onClick={prevHandler} disabled={prevDisabled}>Previous</button>
-            <button className='btn btn-primary' style={{margin:'10px'}} onClick={nextHandler} disabled={nextDisabled}>Next</button>
+            <button className='btn btn-primary ml-3 mb-2 mt-2' onClick={resetHandler}>Reset</button>
+            <button className='btn btn-primary ml-2 mb-2 mt-2' onClick={prevHandler} disabled={prevDisabled}>Previous</button>
+            <button className='btn btn-primary ml-2 mb-2 mt-2' onClick={nextHandler} disabled={nextDisabled}>Next</button>
         </div>
-        <div className='' style={{border: '1px solid #3333', width:'25%'}}>
+        <div className='ml-1' style={{border: '1px solid #3333', width:'25%'}}>
             <h2>{name}</h2>
             <div style={{marginTop: '25px'}}></div>
             <p>{description}</p>

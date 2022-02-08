@@ -1,53 +1,20 @@
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Header from './component/Header'
 import Products from './component/Products';
 import SlideShow from './component/SlideShow';
-
-const products = [
-  {
-    id: 1,
-    name: 'test 1',
-    price: 20,
-    date: '2020-03-25'
-  },
-  {
-    id: 2,
-    name: 'test 2',
-    price: 80,
-    date: '2020-06-15'
-  },
-  {
-    id: 3,
-    name: 'test 3',
-    price: 10,
-    date: '2020-09-29'
-  },
-  {
-    id: 4,
-    name: 'test 4',
-    price: 26,
-    date: '2020-01-16'
-  },
-]
+import PageNotFound from './component/error/PageNotFound'
 
 function App() {
-  const [productItem, setProducts] = useState(products);
-
-  const priceSortHandler = () => {
-      setProducts([...productItem.sort((a, b) => b.price - a.price)]);
-  }
-
-  const dateSortHandler = () => {
-      setProducts([...productItem.sort((a, b) => new Date(b.date) - new Date(a.date))]);
-  }
   return (
     <div className="App">
-      <div className='row'>
-        <div className='container-fluid text-center'><h1>Hacker Rank React Excerise</h1></div>
-        <button type="button" className='btn btn-primary' onClick={priceSortHandler} style={{margin:'10px'}}>Sort by Price</button>
-        <button type="button" className='btn btn-primary' onClick={dateSortHandler}>Sort by Date</button>
-      </div>
-      <Products products={products} />
-      <SlideShow />
+      <Header /> 
+      <Routes>
+        <Route exact path="/" element={<Products/>}>Home</Route>
+        <Route path='/task1' element={<Products/>}>Task 1</Route>
+        <Route path='/task2' element={<SlideShow />}>Task 2</Route>
+        <Route path='*' element={<PageNotFound/>}></Route>
+      </Routes>
     </div>
   );
 }
